@@ -15,45 +15,14 @@ class Login
     private $login;
     private $senha;
 
-    const SESSION_NAME = "painelDeVenda";
+    const SESSION_NAME = "trocarito";
 
     public function autenticar()
     {
         $this->usuario = Db_Usuario::fetchByLogin($this->login, $this->senha);
 
-        if ($this->usuario) {
-            if ($this->checarLimiteHorario() && $this->checarLimiteHorario()) {
-                $_SESSION[self::SESSION_NAME] = $this->usuario;
-            } else {
-                throw new LoginOutOfTimeException();
-            }
-        } else {
+        if (!$this->usuario) {
             throw new LoginNotMatchException();
-        }
-    }
-
-    public function checarDataLimite()
-    {
-        $user = $this->usuario;
-        return ($user->getDataExpiracao() && $user->getDataExpiracao() >= date("Y-m-d H:i:s"));
-    }
-
-    /**
-     * Renora se o usu�rio est� em um hor�rio v�lido
-     * @return boolean
-     */
-    public function checarLimiteHorario()
-    {
-        $user = $this->usuario;
-        $hora = date("H:i:s");
-        if ($user->getHoraInicio() && $user->getHoraTermino()) {
-            if ($hora >= $user->getHoraInicio() && $hora <= $user->getHoraTermino()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
         }
     }
 
@@ -64,11 +33,10 @@ class Login
     public static function isLogado()
     {
         $usuario = self::getUsuario();
-        $hora = date("H:i:s");
+
         if ($usuario && $usuario instanceof Db_Usuario) {
-            if ($hora >= $usuario->getHoraInicio() && $hora <= $usuario->getHoraTermino()) {
                 return true;
-            }
+
             return false;
         } else return false;
     }

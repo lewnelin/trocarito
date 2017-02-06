@@ -34,45 +34,8 @@ class LoginController extends Controller
             $tpUsuario = $this->tb_usuario->fetchByLogin($_POST["txt_login"], md5($_POST["txt_senha"]));
 
             if ($tpUsuario) {
-
-                if ($tpUsuario->getSuper() != '1') {
-
-                    $listaAclUsuario = $this->tb_acl->fetchAll('perfilId = ' . $tpUsuario->getPerfilId());
-
-                    $temPermissao = 0;
-
-                    foreach ($listaAclUsuario as $aclUsuario) {
-
-                        $actionAcl = $this->tb_action->fetchRow('id = ' . $aclUsuario->actionId);
-                        $controllerAction = $this->tb_controller->fetchRow('id = ' . $actionAcl->controllerId);
-                        $moduloController = $this->tb_modulo->fetchRow('id = ' . $controllerAction->moduloId);
-
-                        if ($moduloController->fl_painel_venda == '1') {
-                            $temPermissao = 1;
-                        }
-                    }
-
-                    $cliente = $this->tb_cliente->fetchRow();
-
-                    if ($cliente['fl_situacao'] == 'S') {
-                        $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Acesso expirado.<i class="glyphicon glyphicon-exclamation-sign"></i></b><br> Por favor, entre em contato com o suporte AcadeOne.'));
-                    } elseif ($cliente['fl_situacao'] == 'M') {
-                        $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Sistema em Manutenção <i class="glyphicon glyphicon-wrench"></i></b><br> Por favor, aguarde ou entre em contato com o suporte AcadeOne.'));
-                    }
-
-                    if ($temPermissao == 0) {
-                        $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Permissão Negada <i class="glyphicon glyphicon-wrench"></i></b><br> O Usuário não possui acesso ao painel de vendas.'));
-                    } else {
-                        $this->login->autenticar();
-                        $this->adicionarlogAction();
-                        $this->redir(array("modulo" => "dashboard", "controller" => "dashboard", 'action' => 'index'));
-                    }
-
-                } else {
                     $this->login->autenticar();
-                    $this->adicionarlogAction();
-                    $this->redir(array("modulo" => "dashboard", "controller" => "dashboard", 'action' => 'index'));
-                }
+                    $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
 
             } else {
                 $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Login ou Senha Incorreto <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></b><br> O login ou senha digitados não pertence a nenhuma conta.'));
