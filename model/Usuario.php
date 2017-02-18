@@ -2,148 +2,48 @@
 
 class Usuario extends Zend_Db_Table_Abstract
 {
-    private $id;
-    private $login;
+    private $id_usuario;
+    private $email;
     private $senha;
-    private $horaInicio;
-    private $horaTermino;
-    private $dataExpiracao;
-    private $dataAltSenha;
-    private $super;
-    private $log;
-    private $status;
-    private $perfilId;
+    private $nome;
+    private $nv_caridade;
 
-    CONST TABLE_NAME = "SC_USUARIO";
-
-    public function getPerfilId()
-    {
-        return $this->perfilId;
-    }
-
-    public function setPerfilId($perfil)
-    {
-        if ($perfil instanceof Db_Perfil) $perfil = $perfil->getId();
-        $this->perfilId = $perfil;
-    }
+    CONST TABLE_NAME = "usuario";
 
     /**
-     * @return string (9999-99-99)
+     * @return mixed
      */
-    public function getDataAltSenha()
+    public function getIdUsuario()
     {
-        return $this->dataAltSenha;
+        return $this->id_usuario;
     }
 
     /**
-     * @param string (9999-99-99) $dataAltSenha
+     * @param mixed $id_usuario
      */
-    public function setDataAltSenha($dataAltSenha)
+    public function setIdUsuario($id_usuario)
     {
-        $this->dataAltSenha = $dataAltSenha;
+        $this->id_usuario = $id_usuario;
     }
 
     /**
-     * @return string (9999-99-99)
+     * @return mixed
      */
-    public function getDataExpiracao()
+    public function getEmail()
     {
-        return $this->dataExpiracao;
+        return $this->email;
     }
 
     /**
-     * @param string (9999-99-99) $dataExpiracao
+     * @param mixed $email
      */
-    public function setDataExpiracao($dataExpiracao)
+    public function setEmail($email)
     {
-        $this->dataExpiracao = $dataExpiracao;
+        $this->email = $email;
     }
 
     /**
-     * @return string (HH:mm:ss)
-     */
-    public function getHoraInicio()
-    {
-        return $this->horaInicio;
-    }
-
-    /**
-     * @param string (HH:mm:ss) $horaInicio
-     */
-    public function setHoraInicio($horaInicio)
-    {
-        $this->horaInicio = $horaInicio;
-    }
-
-    /**
-     * @return string (HH:mm:ss)
-     */
-    public function getHoraTermino()
-    {
-        return $this->horaTermino;
-    }
-
-    /**
-     * @param string (HH:mm:ss) $horaTermino
-     */
-    public function setHoraTermino($horaTermino)
-    {
-        $this->horaTermino = $horaTermino;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return (int)$this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        if ($id instanceof Db_Pessoa) {
-            $id = $id->getId();
-        }
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLog()
-    {
-        return $this->log;
-    }
-
-    /**
-     * @param string $log
-     */
-    public function setLog($log)
-    {
-        $this->log = $log;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * @param string $login
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getSenha()
     {
@@ -151,7 +51,7 @@ class Usuario extends Zend_Db_Table_Abstract
     }
 
     /**
-     * @param string $senha
+     * @param mixed $senha
      */
     public function setSenha($senha)
     {
@@ -159,49 +59,50 @@ class Usuario extends Zend_Db_Table_Abstract
     }
 
     /**
-     * @return boolean (flag)
+     * @return mixed
      */
-    public function getSuper()
+    public function getNome()
     {
-        return $this->super;
+        return $this->nome;
     }
 
     /**
-     * @param int (flag) $super
+     * @param mixed $nome
      */
-    public function setSuper($super)
+    public function setNome($nome)
     {
-        $this->super = $super;
+        $this->nome = $nome;
     }
 
     /**
-     * @param int $status
+     * @return mixed
      */
-    public function setStatus($status)
+    public function getNvCaridade()
     {
-        $this->status = $status;
+        return $this->nv_caridade;
     }
 
     /**
-     * @return bool
+     * @param mixed $nv_caridade
      */
-    public function getStatus()
+    public function setNvCaridade($nv_caridade)
     {
-        return ($this->status);
+        $this->nv_caridade = $nv_caridade;
     }
 
     public static function fetchByLogin($login, $senha)
     {
         $db = DB::getInstance();
-        $select = "SELECT * FROM " . self::TABLE_NAME . " WHERE login = :login AND senha = :senha";
+        $select = "SELECT * FROM " . self::TABLE_NAME . " WHERE email = :login AND senha = :senha";
         $stmt = $db->prepare($select);
-        $stmt->execute(array("login" => $login, "senha" => $senha));
+        $stmt->execute(array("email" => $login, "senha" => $senha));
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
         return $stmt->fetch();
     }
 
-    //Busca o usuário pelo id retornando id e login
-    public static function findById($id){
+    //Busca o usuï¿½rio pelo id retornando id e login
+    public static function findById($id)
+    {
         $usuario = self::getDefaultAdapter()->select()
             ->from(array('u' => TB_USUARIO), array('id', 'login'))
             ->where('id = ?', $id)
