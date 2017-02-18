@@ -1,4 +1,4 @@
-<div class="topbar">
+    <div class="topbar">
     <div class="topbar-left">
         <div class="logo">
             <h1><a href="?m=dashboard&c=dashboard&a=index"><img src="public/img/Acade/acadeone_lg_branca.png"
