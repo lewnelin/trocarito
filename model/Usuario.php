@@ -93,7 +93,7 @@ class Usuario extends Zend_Db_Table_Abstract
     public static function fetchByLogin($login, $senha)
     {
         $db = DB::getInstance();
-        $select = "SELECT * FROM " . self::TABLE_NAME . " WHERE email = :login AND senha = :senha";
+        $select = "SELECT * FROM " . self::TABLE_NAME . " WHERE email = :email AND senha = :senha";
         $stmt = $db->prepare($select);
         $stmt->execute(array("email" => $login, "senha" => $senha));
         $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
