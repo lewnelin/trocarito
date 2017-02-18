@@ -1,2 +1,0 @@
-RewriteCond %{REQUEST_FILENAME} !-f
- RewriteRule ^ public/index.php [NC,L]

@@ -1,0 +1,215 @@
+/* Barra do Topo */
+
+/* Cor do botão do lado esquerdo na barra do topo */
+.topbar .topbar-left {
+    float: left;
+    height: 50px;
+    position: relative;
+    z-index: 1;
+    width: 240px;
+    background: #00802d;
+}
+
+
+/* Cor do Módulo selecionado no Menu Esquerdo */
+#sidebar-menu > ul > li > a.active,
+#sidebar-menu > ul > li > a.active.subdrop {
+    color: #FFFFFF;
+    background: #00802d !important;
+    font-weight: 600;
+    border-left: 0px solid rgba(0, 0, 0, 0.3);
+}
+
+
+/* Cor do Módulo selecionado no Menu Esquerdo */
+#sidebar-menu > ul > li > a.active,
+#sidebar-menu > ul > li > a.active.subdrop {
+    color: #FFFFFF;
+    background: #00802d !important;
+    font-weight: 600;
+    border-left: 0px solid rgba(0,0,0,0.3);
+}
+
+/* Cor da parte direita da barra do topo */
+.navbar-default {
+    color: #aaa;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+/* Cores dos Ã­cones, letras e plano de fundo(quando selecionado) da barra do topo */
+.navbar-default .navbar-nav > li > a {
+    color: #aaa;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #000;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555555;
+    background-color: #eee;
+}
+
+.navbar-right .iconify > a > i {
+    font-size: 18px;
+    color: #aaa;
+    line-height: 17px;
+}
+
+.navbar-right .iconify > a:focus > i {
+    font-size: 18px;
+    color: #aaa;
+    line-height: 17px;
+}
+
+.right-opener {
+    border-left: 1px solid #FFF0ff;
+}
+.right-opener i {
+    color: #aaa;
+}
+
+
+/* Cor da parte esquerda da barra do topo */
+.button-menu-mobile {
+    position: absolute;
+    right: 0;
+    float: left;
+    top: 0px;
+    z-index: 2;
+    padding: 10px 18px;
+    height: 50px;
+    font-size: 21px;
+    background: transparent;
+    color: #fff;
+    border: none;
+}
+.button-menu-mobile:hover {
+    color: #000000;
+}
+
+
+/* Botão do FormWizard*/
+
+.easyWizardButtons {overflow:hidden;padding:10px;}
+.easyWizardButtons button, .easyWizardButtons .submit {cursor:pointer}
+.easyWizardButtons .prev {float:left}
+.easyWizardButtons .next, .easyWizardButtons .submit {float:right;}
+
+/* Retirando os margin-top 50px */
+.content-page > .content {
+    margin-top: 0px;
+    padding: 20px;
+    position: relative;
+}
+
+/* Ajustando gif de carregamento */
+
+#divLoading
+{
+    display : none;
+}
+#divLoading.show
+{
+    display : block;
+    position : fixed;
+    z-index: 100;
+    background-image : url('http://loadinggif.com/images/image-selection/3.gif');
+    background-color:#666;
+    opacity : 0.4;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}
+#loadinggif.show
+{
+    left : 50%;
+    top : 50%;
+    position : absolute;
+    z-index : 101;
+    width : 32px;
+    height : 32px;
+    margin-left : -16px;
+    margin-top : -16px;
+}
+
+/* Numero na tabela */
+.table-number {
+    text-align: right;
+}
+
+/* Filtros DataTable*/
+.form-control {
+    margin: 0 15px 0 0;
+}
+
+/* Paginação DataTable*/
+.pagination > li > a {
+    line-height: 14px;
+}
+
+div.dataTables_paginate ul.pagination {
+    margin: 10px 0;
+}
+
+/* Centralizar */
+.tb-center th, .tb-center{text-align: center}
+
+/* Margem topo pagina inicial */
+.topo-pagina-inicial {
+    margin-top: 50px;
+}
+
+/* Botão filtrar */
+
+.btnFilter{
+    float: left;
+    margin-right: 20px;
+
+}
+
+/* Botão add aprovador */
+
+.add_aprovador {
+    padding: 2px 8px;
+}
+
+/* Botão ações menu "Mais" */
+
+.dropdown-menu > li > a.btnMaisAcao:hover {
+    background: lightgray;
+    color: #000;
+}
+
+/* Modal visualizar */
+
+.form-horizontal.visualizar-form div div { padding-top: 7px; }
+.form-horizontal.visualizar-form .form-group { margin-bottom: 0; }
+
+/* Adicionar lotes - tabela de preços */
+#moveLotes{
+    width:100%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.btn-inative { background-color: rgb(221, 221, 221); color: #000;}
+
+#tabelaAdicionarLotes, #tabelaSalvarLotes {
+    vertical-align: middle;
+}
+
+/* Alterando o tamanho da fonte da mensagem do menu*/
+.profile-text {
+    padding-top: 25px;
+    color: #4A525F;
+    font-family: "Open Sans";
+    font-size: 15px;
+}
