@@ -11,10 +11,8 @@ class LoginController extends Controller {
         $this->tb_log_acesso = new LogAcesso();
         $this->login = new Login();
         $this->tb_usuario = new Usuario();
-        $this->tb_cliente = new Cliente();
         $this->tb_acl = new ACL();
         $this->tb_action = new Action();
-        $this->tb_controller = new ControllerTb();
         $this->tb_modulo = new Modulo();
     }
 
@@ -23,7 +21,6 @@ class LoginController extends Controller {
     }
 
     public function autenticarAction() {
-
         if ($this->_isPost) {
 
             $this->login->setLogin($_POST["txt_login"]);
