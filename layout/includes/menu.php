@@ -1,13 +1,10 @@
 <div class="topbar">
     <div class="topbar-left">
-        <div class="logo">
-            <h1><a href="?m=dashboard&c=index&a=index"><img src="public/img/Acade/acadeone_lg_branca.png"
+        <div class="logo" style="padding: 5px">
+            <h1><a href="?m=dashboard&c=index&a=index"><img src="images/logo.png"
                                                             alt="Inicio"></a>
             </h1>
         </div>
-        <button class="button-menu-mobile open-left">
-            <i class="fa fa-bars"></i>
-        </button>
     </div>
 
     <div class="navbar navbar-default" role="navigation">
