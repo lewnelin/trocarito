@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Estrutura da tabela `valor`
 --
 
-CREATE TABLE IF NOT EXISTS `valor` (
+CREATE TABLE IF NOT EXISTS `doacao` (
   `id_doacao` int(11) NOT NULL AUTO_INCREMENT,
   `id_instituicao` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
