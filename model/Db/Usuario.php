@@ -12,7 +12,7 @@ class Db_Usuario {
     private $status;
     private $perfilId;
 
-    CONST TABLE_NAME = "SC_USUARIO";
+    CONST TABLE_NAME = "usuario";
 
     public function getPerfilId() {
         return $this->perfilId;
@@ -203,9 +203,9 @@ class Db_Usuario {
 
     public static function fetchByLogin($login, $senha) {
         $db = DB::getInstance();
-        $select = "SELECT * FROM ".self::TABLE_NAME." WHERE login = :login AND senha = :senha";
+        $select = "SELECT * FROM ".self::TABLE_NAME." WHERE email = :email AND senha = :senha";
         $stmt = $db->prepare($select);
-        $stmt->execute(array("login" => $login, "senha" => $senha));
+        $stmt->execute(array("email" => $login, "senha" => $senha));
         $stmt->setFetchMode(PDO::FETCH_CLASS,__CLASS__);
         return $stmt->fetch();
     }

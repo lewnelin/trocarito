@@ -21,10 +21,6 @@ class LoginController extends Controller
     {
         if ($this->_isPost) {
 
-
-            $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
-            exit;
-
             $this->login->setLogin($_POST["txt_login"]);
             $this->login->setSenha(md5($_POST["txt_senha"]));
 
