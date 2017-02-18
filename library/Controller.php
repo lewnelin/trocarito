@@ -93,14 +93,11 @@ class Controller
 
     public function processRequest()
     {
-        if (Login::isLogado()) {
-            if (ACL::hasPermission(Login::getUsuario(), $action->getId())) {
-                $execucao = $this->getInstanceController($controller->getNome());
-                $this->execAction($execucao, $action->getNome());
-            } else {
-                $this->redir(array("modulo" => "", "controller" => "dashboard", 'action' => 'painelVenda'), array("permissao" => '<b>O Usuário não possui permissão para acessar esta ação.</b>'));
-            }
-        }
+        $controller = isset($_GET['c'])?$_GET['c']:'login';
+        $acao = isset($_GET['a'])?$_GET['a']:'index';
+
+        $execucao = $this->getInstanceController($controller);
+        $this->execAction($execucao, $acao);
     }
 
     public
