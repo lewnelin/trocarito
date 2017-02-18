@@ -1,6 +1,6 @@
 <?php
 
-class AgendamentoCrmController extends Controller
+class UsuarioController extends Controller
 {
 
     //Funcao publica do construtor

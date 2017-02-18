@@ -669,7 +669,7 @@ class Lote extends Zend_Db_Table_Abstract
      *
      * @param $idEmpreendimento = id do empreendimento da tabela EMPREENDIMENTO
      * @param null $nomeQuadra = nome da quadra da tabela LOTES
-     * @param null $ultimoIdLote = id do ultimo lote que está na view painelVenda.php
+     * @param null $ultimoIdLote = id do ultimo lote que está na view index.php
      * @return array = lista de lotes
      */
     public function getLotesEmpreendimento($idEmpreendimento, $nomeQuadra = null, $ultimoIdLote = null, $tabelaPreco = null)
