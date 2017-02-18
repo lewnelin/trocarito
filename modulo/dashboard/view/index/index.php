@@ -1,8 +1,6 @@
 <?php
-
 require_once 'layout/includes/header.php';
 require_once 'layout/includes/menu.php';
-$listaEmpreendimentos = $this->get("listaEmpreendimentos");
 ?>
     <style>
         .widget {

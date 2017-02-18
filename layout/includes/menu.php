@@ -1,8 +1,8 @@
-    <div class="topbar">
+<div class="topbar">
     <div class="topbar-left">
         <div class="logo">
-            <h1><a href="?m=dashboard&c=dashboard&a=index"><img src="public/img/Acade/acadeone_lg_branca.png"
-                                                                alt="Inicio"></a>
+            <h1><a href="?m=dashboard&c=index&a=index"><img src="public/img/Acade/acadeone_lg_branca.png"
+                                                            alt="Inicio"></a>
             </h1>
         </div>
         <button class="button-menu-mobile open-left">
@@ -17,29 +17,16 @@
                     <li>
                         <label>
                             <div style="margin-top: -32px">
-                                <div class="profile-text" style="margin-left: 20px"><br> Painel de <b>Vendas</b></div>
+                                <div class="profile-text" style="margin-left: 20px"><br><b>Trocarito</b></div>
                             </div>
                         </label>
                     </li>
-                    <li class="dropdown iconify hide-phone"><a href="#" onclick="javascript:toggle_fullscreen()"><i
+                    <li class="dropdown iconify hide-phone"><a href="#" onclick="toggle_fullscreen()"><i
                                 class="icon-resize-full-2"></i></a></li>
                     <li class="dropdown topbar-profile">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="rounded-image topbar-profile-image">
-                                    <img src="public/img/Acade/AcadeLotear_pq.png">
-                                </span>
-                            <?php
-                            if (Login::isLogado()) {
-                                $nome = explode(' ', Db_Pessoa::find(Login::getUsuario()->getId())->getNome());
-                                $nome[1] = (strlen($nome[1]) > 2) ? $nome[1] : $nome[2];
-                                echo $nome[0] . ' <strong>' . $nome[1] . '</strong>';
-                            }
-                            ?>
-                            <i class="fa fa-caret-down"></i>
-                        </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="<?= $this->_helper->getLink(array ("m" => "dashboard",
+                                <a href="<?= $this->_helper->getLink(array("m" => "dashboard",
                                     "c" => "login",
                                     "a" => "logout")); ?>"
                                    class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i>
@@ -65,47 +52,15 @@
         <div id="sidebar-menu">
             <ul>
                 <li>
-                    <a <?= ($this->action == 'painelVenda' ? 'class="active"' : ''); ?>
-                        href="?m=dashboard&c=dashboard">
-
+                    <a href="?m=dashboard&c=index">
                         <i class="icon-home-3"></i><span>Início</span>
                     </a>
                 </li>
-
-                <?php
-                $menu = new Menu(Login::getUsuario()->getPerfilId());
-                foreach ($menu->getModulos() as $p):
-
-                    if (!$p->getFlPainelVenda() || $p->getNome() == "Dashboard") continue;
-                    ?>
-
-                    <li <?= (count($menu->getControllers($p)) ? 'class="has_sub"' : '"'); ?> >
-
-                        <a href="#" class="master">
-                            <i class="<?= ($p->ds_icon ? $p->ds_icon : ''); ?>"></i>
-                            <span><?= utf8_encode($p->getNome()); ?></span>
-                        </a>
-
-                        <ul>
-                            <?php foreach ($menu->getControllers($p) as $c): ?>
-                                <?php if (file_exists("modulo/" . $p->getPath() . "/controller/" . ucfirst($c->getNome()) . "Controller" . ".php")) : ?>
-                                    <li>
-                                        <a class="limpaUltimoId <?= ($_GET['c'] == $c->getNome()) ? 'active' : ''; ?>"
-                                           href="?m=<?= $p->getPath() ?>&c=<?= $c->getNome(); ?>"><?= utf8_encode($c->getRotulo()); ?>
-                                        </a>
-                                    </li>
-                                <?php else : ?>
-                                    <li>
-                                        <a class="limpaUltimoId <?= ($_GET['c'] == $c->getNome()) ? 'active' : ''; ?>"
-                                           href="#" style="cursor: not-allowed; color: #808080"><?= utf8_encode($c->getRotulo()); ?>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-
-                            <?php endforeach; ?>
-                        </ul>
-                    </li>
-                <?php endforeach; ?>
+                <li>
+                    <a href="?m=cadastro&c=usuario">
+                        <i class="icon-bell"></i><span>Instituições</span>
+                    </a>
+                </li>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -187,54 +142,16 @@
 
     <div class="content">
 
-        <?php
+        <?php if ($_GET['c'] != 'dashboard') : ?>
 
-        if ($_GET['c'] != 'dashboard') {
+            <div class="widget">
 
-            switch ($this->action) {
-                case "listar":
-                    $icon = 'glyphicon glyphicon-list-alt';
-                    break;
-                case "adicionar":
-                    $icon = 'icon-plus-2';
-                    break;
-                case "editar":
-                    $icon = 'icon-edit';
-                    break;
-                case "gerar":
-                    $icon = 'icon-doc';
-                    break;
-                case "imprimir":
-                    $icon = 'icon-print-1';
-                    break;
-                case "contato":
-                    $icon = 'icon-user-add';
-                    break;
-            }
+                <div class="widget-content padding">
 
-            ?>
-
-            <div class="page-heading">
-                <h1>
-                    <i class='<?= $icon ?>'></i>
-                    <?= isset($_GET['a']) ? ucwords($_GET['a']) : '' ?>
-                    <?php if ($this->action == 'gerar') echo '<b>Relatório</b>'; ?>
-                    <strong><?= isset($_GET['c']) ? ucwords(ControllerTb::getControllerByNome($_GET['c'])) : '' ?></strong>
-                </h1>
-            </div>
-
-        <?php } ?>
-
-        <?php if ($_GET['c'] != 'dashboard') { ?>
-
-        <div class="widget">
-
-            <div class="widget-content padding">
-
-                <div class="alert alert-warning alert-dismissable" style="display: none" id="alertAviso">Nenhum
-                    registro foi selecionado.
+                    <div class="alert alert-warning alert-dismissable" style="display: none" id="alertAviso">Nenhum
+                        registro foi selecionado.
+                    </div>
                 </div>
 
-                <?php
-                }
-                ?>
+            </div>
+        <?php endif; ?>
