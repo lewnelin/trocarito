@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `trocarito` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `trocarito`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: trocarito
@@ -139,6 +137,7 @@ CREATE TABLE `usuario` (
   `email` varchar(30) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `nv_caridade` enum('1','10','100') NOT NULL,
+  `fl_admin` enum('1','0') NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='USUARIO';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -149,7 +148,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Admin','admin@gmail.com','202cb962ac59075b964b07152d234b70','1');
+INSERT INTO `usuario` VALUES (1,'Admin','admin@gmail.com','202cb962ac59075b964b07152d234b70','1','1');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -162,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-18 20:18:42
+-- Dump completed on 2017-02-18 21:04:52
