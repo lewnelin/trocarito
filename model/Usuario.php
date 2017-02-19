@@ -100,12 +100,23 @@ class Usuario extends Zend_Db_Table_Abstract
         return $stmt->fetch();
     }
 
-    //Busca o usu�rio pelo id retornando id e login
+    public static function getMaiorDoador(){
+        $usuarios = self::getDefaultAdapter()->select()
+            ->from(array('u' => 'usuario'), array('id_usuario','nome','nv_caridade'))
+            ->join(array('d' => 'doacao'),'d.id_usuario = u.id_usuario',array('valorDoado'=>'SUM(d.valor)'))
+            ->group('id_usuario')
+            ->order('valorDoado')
+            ->query()->fetchAll();
+
+        return $usuarios[0];
+    }
+
+    //Busca o usu�rio pelo id retornando seus dados
     public static function findById($id)
     {
         $usuario = self::getDefaultAdapter()->select()
-            ->from(array('u' => TB_USUARIO), array('id', 'login'))
-            ->where('id = ?', $id)
+            ->from(array('u' => TB_USUARIO), array('*'))
+            ->where('id_usuario = ?', $id)
             ->query()->fetch();
 
         return $usuario;

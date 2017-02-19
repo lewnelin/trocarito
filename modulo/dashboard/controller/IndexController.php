@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     public function indexAction()
     {
-        error_reporting(2);
+        error_reporting(1);
         $doacoes = $this->doacao->getAdapter()
             ->select()->from(array('d' => 'doacao'))
             ->join(array('i' => 'instituicao'), 'd.id_instituicao = i.id_instituicao', array('*'))
@@ -39,6 +39,7 @@ class IndexController extends Controller
         $this->set('instituicoes', $instituicoes);
         $this->set('doacoes', $doacoes);
         $this->set('vlDoado', $vlDoado);
+        $this->set('doador', $biggestUser);
         $this->set('user', $this->user);
 
         $this->display('index');
