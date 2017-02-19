@@ -17,35 +17,34 @@ class LoginController extends Controller
         if ($this->login->getUsuario())
             $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
 
+
+        if ($this->_isPost && $this->valida(array('login', 'senha'))) {
+            $this->autenticarAction();
+        }
+
         $this->display('index');
     }
 
     public function autenticarAction()
     {
-        if ($this->_isPost) {
+        $this->login->setLogin($_POST["login"]);
+        $this->login->setSenha(md5($_POST["senha"]));
 
-            $this->login->setLogin($_POST["txt_login"]);
-            $this->login->setSenha(md5($_POST["txt_senha"]));
-
-            try {
-                $this->login->autenticar();
-            } catch (LoginOutOfTimeException $eTime) {
-                $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Permissão Negada<i class="glyphicon glyphicon-exclamation-sign"></i></b><br> O Usuário não pode acessar o sistema neste horário.'));
-            } catch (LoginNotMatchException $eMatch) {
-            }
-
-            $tpUsuario = $this->usuario->fetchByLogin($_POST["txt_login"], md5($_POST["txt_senha"]));
-
-            if ($tpUsuario) {
-                $this->login->autenticar();
-                $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
-
-            } else {
-                $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Login ou Senha Incorreto <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></b><br> O login ou senha digitados não pertence a nenhuma conta.'));
-            }
-
+        try {
+            $this->login->autenticar();
+        } catch (LoginOutOfTimeException $eTime) {
+            $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Permissão Negada<i class="glyphicon glyphicon-exclamation-sign"></i></b><br> O Usuário não pode acessar o sistema neste horário.'));
         }
 
+        $tpUsuario = $this->usuario->fetchByLogin($_POST["login"], md5($_POST["senha"]));
+
+        if ($tpUsuario) {
+            $this->login->autenticar();
+            $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
+
+        } else {
+            $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Login ou Senha Incorreto <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></b><br> O login ou senha digitados não pertence a nenhuma conta.'));
+        }
     }
 
     public function logoutAction()
@@ -54,11 +53,10 @@ class LoginController extends Controller
         $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'));
     }
 
-
     //Função pública responsável por adicionar um novo usuário
     public function cadastrarAction()
     {
-        if ($this->_isPost && $this->valida()) {
+        if ($this->_isPost && $this->valida(array('nome', 'email', 'senha'))) {
             $usuarioT = $this->usuario->getAdapter();
             $usuarioT->beginTransaction();
 
@@ -70,15 +68,15 @@ class LoginController extends Controller
             $usuario->save();
 
             $usuarioT->commit();
-            $this->set('success','<div class="alert alert-success ">Cadastro realizado com sucesso!</div>');
-            $this->display('index');exit;
+            $this->set('success', '<div class="alert alert-success ">Cadastro realizado com sucesso!</div>');
+            $this->display('index');
+            exit;
         }
         $this->display('cadastrar');
     }
 
-    private function valida()
+    private function valida($campos, $view = '')
     {
-        $campos = array('nome', 'email', 'senha');
         $valid = true;
         foreach ($campos as $campo) {
             if ($_POST[$campo] == '') {
@@ -88,7 +86,7 @@ class LoginController extends Controller
         }
 
         if (!$valid) {
-            $this->display($this->action);
+            $this->display(($view != '') ? $this->action : $view);
         } else {
             return $valid;
         }

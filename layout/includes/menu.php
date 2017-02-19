@@ -3,7 +3,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b><img alt="avatar" height="30" src="images/logo.png"></b></a>
+    <a href="?m=dashboard&c=index&a=index" class="logo"><b><img alt="avatar" height="30" src="images/logo.png"></b></a>
     <!--logo end-->
 
     <div class="top-menu">
@@ -28,22 +28,17 @@ if (isset($_SESSION['trocarito'])) {
             <h5 class="centered"><?= isset($user->nome) ? $user->nome : '' ?></h5>
 
             <li class="mt">
-                <a class="active" href="index.php">
+                <a class="<?= ($_GET['c']=='index')?'active':''?>" href="index.php">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li class="sub-menu">
-                <a href="#">
-                    <i class="fa fa-university"></i>
-                    <span>Instituições</span>
+            <li class="mt">
+                <a class="<?= ($_GET['c']=='instituicao')?'active':''?>" href="index.php">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Instituição</span>
                 </a>
-                <ul class="sub">
-                    <li><a href="general.html">General</a></li>
-                    <li><a href="buttons.html">Buttons</a></li>
-                    <li><a href="panels.html">Panels</a></li>
-                </ul>
             </li>
 
         </ul>
