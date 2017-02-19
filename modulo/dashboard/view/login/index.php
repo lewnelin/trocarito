@@ -30,26 +30,21 @@
 <div id="login-page">
     <div class="container">
 
-        <form class="form-login" action="?m=dashboard&c=login&a=autenticar" method="post">
+        <form class="form-login" action="?m=dashboard&c=login&a=index" method="post">
             <h2 class="form-login-heading">Login</h2>
             <div class="login-wrap">
                 <?= ($this->get('success'))?$this->get('success'):'' ?>
-                <input type="text" class="form-control" placeholder="Usuário" name="txt_login" autofocus>
+                <?= ($this->get('login'))?$this->get('login'):'' ?>
+                <input type="text" class="form-control" placeholder="Usuário" name="login" autofocus>
                 <br>
-                <input type="password" class="form-control" placeholder="Senha" name="txt_senha">
-                <label class="checkbox">
-		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> Esqueceu a senha?</a>
-
-		                </span>
-                </label>
+                <?= ($this->get('senha'))?$this->get('senha'):'' ?>
+                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                <br>
                 <button class="btn btn-success btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>  Acessar </button>
-                <hr>
 
                 <div class="login-social-link centered">
                     <p>ou você pode entrar via rede social</p>
                     <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                    <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
                 </div>
                 <div class="registration">
                     Não possui a conta ainda?<br/>

@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends Controller
+class InstituicaoController extends Controller
 {
 
     //Função pública do construtor
@@ -10,17 +10,12 @@ class LoginController extends Controller
 
         $this->login = new Login();
         $this->usuario = new Usuario();
+        $this->instituicao = new Instituicao();
     }
 
     public function indexAction()
     {
-        if ($this->login->getUsuario())
-            $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
-
-
-        if ($this->_isPost && $this->valida(array('login', 'senha'))) {
-            $this->autenticarAction();
-        }
+        $this->set('listaInstituicao',$this->instituicao->fetchAll());
 
         $this->display('index');
     }
