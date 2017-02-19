@@ -24,18 +24,21 @@ if (isset($_SESSION['trocarito'])) {
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><img src="assets/img/Coracao<?= isset($user->nv_caridade) ? $user->nv_caridade : '0' ?>.png" class="img-circle" width="60"></p>
+            <p class="centered"><img
+                        src="assets/img/Coracao<?= isset($user->nv_caridade) ? $user->nv_caridade : '0' ?>.png"
+                        class="img-circle" width="60"></p>
             <h5 class="centered"><?= isset($user->nome) ? $user->nome : '' ?></h5>
 
             <li class="mt">
-                <a class="<?= ($_GET['c']=='index')?'active':''?>" href="index.php">
+                <a class="<?= ($_GET['c'] == 'index') ? 'active' : '' ?>" href="index.php">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li class="mt">
-                <a class="<?= ($_GET['c']=='instituicao')?'active':''?>" href="?m=dashboard&c=instituicao&a=index">
+                <a class="<?= ($_GET['c'] == 'instituicao') ? 'active' : '' ?>"
+                   href="?m=dashboard&c=instituicao&a=index">
                     <i class="li_shop"></i>
                     <span>Instituição</span>
                 </a>
@@ -70,3 +73,6 @@ if (isset($_SESSION['trocarito'])) {
 
 
     <section class="wrapper">
+
+        <?= ($this->get('success')) ? $this->get('success') : '' ?>
+        <?= ($this->get('fail')) ? $this->get('success') : '' ?>

@@ -11,11 +11,12 @@ class InstituicaoController extends Controller
         $this->login = new Login();
         $this->usuario = new Usuario();
         $this->instituicao = new Instituicao();
+        $this->categoria = new Categoria();
     }
 
     public function indexAction()
     {
-        $this->set('listaInstituicao',$this->instituicao->fetchAll());
+        $this->set('listaInstituicao', $this->instituicao->fetchAll('fl_ativo = "1"'));
 
         $this->display('index');
     }
@@ -68,6 +69,76 @@ class InstituicaoController extends Controller
             exit;
         }
         $this->display('cadastrar');
+    }
+
+    //Função pública responsável por adicionar um novo usuário
+    public function editarAction()
+    {
+
+        $id = $this->_helper->filters($_GET['id'], 'onlyNumber');
+
+        $instituicao = $this->instituicao->fetchRow('id_instituicao = ' . $id);
+
+        if (!$instituicao) {
+            $this->set('fail', '<div class="alert alert-danger ">Instituição não encontrada!</div>');
+            $this->indexAction();
+            exit;
+        }
+
+        $categoria = $this->categoria->fetchAll();
+        $usuario = $this->usuario->fetchRow('id_usuario = ' . $instituicao['id_usuario']);
+        $this->set('listaCategoria', $categoria);
+        $this->set('usuario', $usuario);
+        $this->set('instituicao', $instituicao);
+
+        if ($this->_isPost && $this->valida(array('nomeRepresentante', 'email', 'nomeInstituicao', 'categoria', 'descricao'))) {
+            $usuarioT = $this->usuario->getAdapter();
+            $usuarioT->beginTransaction();
+
+            $usuario->nome = $this->_helper->filters($_POST['nomeRepresentante']);
+            $usuario->email = $this->_helper->filters($_POST['email']);
+
+            if ($_POST['senha'] != '')
+                $usuario->senha = $this->_helper->filters($_POST['senha'], 'md5');
+            $usuario->save();
+
+            $instituicao->id_categoria = $this->_helper->filters($_POST['categoria']);
+            $instituicao->nome = $this->_helper->filters($_POST['nomeInstituicao']);
+            $instituicao->descricao = $this->_helper->filters($_POST['descricao']);
+            $instituicao->save();
+
+            $usuarioT->commit();
+            $this->set('success', '<div class="alert alert-success ">Alteração realizada com sucesso!</div>');
+            $this->indexAction();
+            exit;
+        }
+        $this->display('editar');
+    }
+
+    /**
+     * Remove os registros selecionados
+     */
+    public function deletarAction()
+    {
+
+        $id = $this->_helper->filters($_GET['id'], 'onlyNumber');
+
+        $instituicao = $this->instituicao->fetchRow('id_instituicao = ' . $id . ' AND fl_ativo = "1"');
+
+        if (!$instituicao) {
+            $this->set('fail', '<div class="alert alert-danger ">Instituição não encontrada!</div>');
+            $this->indexAction();
+            exit;
+        }
+
+        $instituicao->fl_ativo = 0;
+        $instituicao->save();
+
+        $this->set('success', '<div class="alert alert-success ">Deletado com sucesso!</div>');
+        $this->indexAction();
+        exit;
+
+
     }
 
     private function valida($campos, $view = '')

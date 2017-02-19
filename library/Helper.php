@@ -778,6 +778,10 @@ class Helper
                             //transforma valor em float
                             $var = $this->getExcelMoney($value);
                             break;
+                        case 'md5':
+                            //transforma valor em float
+                            $var = md5($value);
+                            break;
                     }
                 }
             }

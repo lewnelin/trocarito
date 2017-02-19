@@ -16,7 +16,6 @@ require_once 'layout/includes/menu.php';
     <div class="row">
         <form id="formDashboard" method="post" action="?m=dashboard&c=index&a=dashboardUsuario">
             <div class="col-sm-12 main-chart">
-
                 <?php
                 if ($this->get('listaInstituicao'))
                     foreach ($this->get('listaInstituicao') as $instituicao):?>
@@ -28,22 +27,16 @@ require_once 'layout/includes/menu.php';
                             </div>
                             <p><?= $instituicao['descricao'] ?></p>
                             <p>
-                                <a class="btn btn-success btn-xs" href=""><i class="fa fa-check"></i></a>
-                                <a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                                <a class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                                <a class="btn btn-success btn-xs" href="?m=dashboard&c=instituicao&a=editar&id=<?= $instituicao['id_instituicao'] ?>">
+                                    <i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-danger btn-xs" href="?m=dashboard&c=instituicao&a=deletar&id=<?= $instituicao['id_instituicao'] ?>"><i class="fa fa-trash-o "></i></a>
                             </p>
                         </div>
 
                     <?php endforeach; ?>
-                <!-- /row -->
-
             </div>
         </form>
-
-        <input type="hidden" id="ultimoId" name="ultimoId" value=""/>
-        <input type="hidden" id="idCorretorAtual" name="idCorretorAtual"
-               value="<?= Login::getUsuario()->getId() . '_' . Login::getUsuario()->getSuper() ?>"/>
-
     </div>
 
 <?php require_once 'layout/includes/footer.php'; ?>
