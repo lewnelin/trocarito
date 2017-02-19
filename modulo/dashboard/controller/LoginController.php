@@ -48,7 +48,7 @@ class LoginController extends Controller
     public function logoutAction()
     {
         $this->login->logout();
-        $this->redir(array());
+        $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'));
     }
 
 
