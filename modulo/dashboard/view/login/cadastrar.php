@@ -30,13 +30,16 @@
 <div id="login-page">
     <div class="container">
 
-        <form class="form-login" action="?m=dashboard&c=login&a=autenticar" method="post">
+        <form class="form-login" action="?m=dashboard&c=login&a=cadastrar" method="post">
             <h2 class="form-login-heading">CADASTRO</h2>
             <div class="login-wrap">
+                <?= ($this->get('nome'))?$this->get('nome'):'' ?>
                 <input type="text" class="form-control" placeholder="Nome Completo" name="nome" autofocus>
                 <br>
+                <?= ($this->get('email'))?$this->get('email'):'' ?>
                 <input type="text" class="form-control" placeholder="Email" name="email" autofocus>
                 <br>
+                <?= ($this->get('senha'))?$this->get('senha'):'' ?>
                 <input type="password" class="form-control" placeholder="Senha" name="senha">
                 <br>
                 <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-plus"></i>  Cadastrar </button>

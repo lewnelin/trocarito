@@ -33,6 +33,7 @@
         <form class="form-login" action="?m=dashboard&c=login&a=autenticar" method="post">
             <h2 class="form-login-heading">Login</h2>
             <div class="login-wrap">
+                <?= ($this->get('success'))?$this->get('success'):'' ?>
                 <input type="text" class="form-control" placeholder="Usuário" name="txt_login" autofocus>
                 <br>
                 <input type="password" class="form-control" placeholder="Senha" name="txt_senha">

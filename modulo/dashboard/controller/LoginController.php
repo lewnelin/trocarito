@@ -9,7 +9,7 @@ class LoginController extends Controller
         parent::__construct($request);
 
         $this->login = new Login();
-        $this->tb_usuario = new Usuario();
+        $this->usuario = new Usuario();
     }
 
     public function indexAction()
@@ -34,7 +34,7 @@ class LoginController extends Controller
             } catch (LoginNotMatchException $eMatch) {
             }
 
-            $tpUsuario = $this->tb_usuario->fetchByLogin($_POST["txt_login"], md5($_POST["txt_senha"]));
+            $tpUsuario = $this->usuario->fetchByLogin($_POST["txt_login"], md5($_POST["txt_senha"]));
 
             if ($tpUsuario) {
                 $this->login->autenticar();
@@ -58,11 +58,39 @@ class LoginController extends Controller
     //Função pública responsável por adicionar um novo usuário
     public function cadastrarAction()
     {
+        if ($this->_isPost && $this->valida()) {
+            $usuarioT = $this->usuario->getAdapter();
+            $usuarioT->beginTransaction();
 
-        if ($this->_isPost) {
+            $usuario = $this->usuario->createRow();
+            $usuario->nome = $this->_helper->filters($_POST['nome']);
+            $usuario->email = $this->_helper->filters($_POST['email']);
+            $usuario->senha = $this->_helper->filters(md5($_POST['senha']));
+            $usuario->fl_admin = 0;
+            $usuario->save();
 
-
+            $usuarioT->commit();
+            $this->set('success','<div class="alert alert-success ">Cadastro realizado com sucesso!</div>');
+            $this->display('index');exit;
         }
         $this->display('cadastrar');
+    }
+
+    private function valida()
+    {
+        $campos = array('nome', 'email', 'senha');
+        $valid = true;
+        foreach ($campos as $campo) {
+            if ($_POST[$campo] == '') {
+                $valid = false;
+                $this->set($campo, '<div style="color: red"> O campo <strong>' . $campo . '</strong> é obrigatório.</div>');
+            }
+        }
+
+        if (!$valid) {
+            $this->display($this->action);
+        } else {
+            return $valid;
+        }
     }
 }
