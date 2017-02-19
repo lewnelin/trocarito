@@ -1,9 +1,4 @@
-﻿<?php
-if (Login::isLogado()) {
-    $this->redir(array("m" => "dashboard", "controller" => "dashboard", 'action' => 'painelVenda'));
-}
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">

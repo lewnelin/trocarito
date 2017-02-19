@@ -14,6 +14,9 @@ class LoginController extends Controller
 
     public function indexAction()
     {
+        if ($this->login->getUsuario())
+            $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
+
         $this->display('index');
     }
 

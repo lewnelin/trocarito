@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+if (!Login::isLogado()) {
+    $this->redir(array("m" => "dashboard", "controller" => "login", 'action' => 'index'));
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">

@@ -23,6 +23,8 @@ class Login
 
         if (!$this->usuario) {
             throw new LoginNotMatchException();
+        } else {
+            $_SESSION[self::SESSION_NAME] = $this->usuario;
         }
     }
 
