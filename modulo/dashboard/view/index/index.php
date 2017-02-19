@@ -34,46 +34,38 @@ require_once 'layout/includes/menu.php';
         <form id="formDashboard" method="post" action="?m=dashboard&c=index&a=dashboardUsuario">
             <div class="col-sm-12 main-chart">
 
-                <div class="row mtbox">
-                    <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                <div class="row">
+                    <div class="col-sm-3 box0">
                         <div class="box1">
-                            <span class="li_heart"></span>
+                            <span class="li_star"></span>
 
                             <h3>933</h3>
                         </div>
-                        <p>933 People liked your page the last 24hs. Whoohoo!</p>
+                        <p>Você já realizou <b>933</b> contribuições!</p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-sm-3 box0">
                         <div class="box1">
-                            <span class="li_cloud"></span>
+                            <span class="li_banknote"></span>
 
-                            <h3>+48</h3>
+                            <h3>R$ 135,00</h3>
                         </div>
-                        <p>48 New files were added in your cloud storage.</p>
+                        <p>Valor total contribuído: <b>R$ 135,00</b></p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-sm-3 box0">
                         <div class="box1">
-                            <span class="li_stack"></span>
+                            <span class="li_shop"></span>
 
-                            <h3>23</h3>
+                            <h3>3</h3>
                         </div>
-                        <p>You have 23 unread messages in your inbox.</p>
+                        <p><b>3</b> Instituição são apoiadas por você!</p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-sm-3 box0">
                         <div class="box1">
-                            <span class="li_news"></span>
+                            <span class="li_heart" style="color: red;"></span>
 
-                            <h3>+10</h3>
+                            <h3><?= isset($user->nv_caridade) ? $user->nv_caridade : '' ?>%</h3>
                         </div>
-                        <p>More than 10 news were added in your reader.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_data"></span>
-
-                            <h3>OK!</h3>
-                        </div>
-                        <p>Your server is working perfectly. Relax & enjoy.</p>
+                        <p>Sua caridade é <?= isset($user->nv_caridade) ? $user->nv_caridade : '' ?>%</p>
                     </div>
 
                 </div>
