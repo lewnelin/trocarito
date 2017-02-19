@@ -18,10 +18,10 @@ class IndexController extends Controller
     public function indexAction()
     {
         $instituicoes = $this->instituicao->getAdapter()
-            ->select()->where('id_usuario = ?',$this->user->id_usuario)
+            ->select()->from('instituicao')
+            ->where('id_usuario = ?',$this->user->id_usuario)
             ->query()->fetchAll();
 
-        var_dump($instituicoes); exit;
         $this->display('index');
     }
 }
