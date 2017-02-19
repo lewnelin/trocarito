@@ -18,18 +18,18 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
             <h5 class="centered">Marcel Newman</h5>
 
             <li class="mt">
-                <a class="active" href="index.html">
+                <a class="active" href="index.php">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" >
+                <a href="#" >
                     <i class="fa fa-university"></i>
                     <span>Instituições</span>
                 </a>
