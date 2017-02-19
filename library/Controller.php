@@ -31,15 +31,12 @@ class Controller
     protected $view;
     protected $_isPost;
     protected $_isGet;
-    private $_loginController;
     public $_helper;
     protected $_lastView;
     protected $dados;
 
     public function __construct($request)
     {
-
-
         $mod = $request["modulo"];
         $cot = $request["controller"];
         $act = $request["action"];

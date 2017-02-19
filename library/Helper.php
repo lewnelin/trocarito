@@ -504,9 +504,9 @@ class Helper
         $acao = isset($_GET['a']) ? $_GET['a'] : null;
         $breadcrumb = '<ol class="breadcrumb">';
 
-        if ($acao != 'painelVenda') {
+        if ($acao != 'index') {
             (isset($_GET['m']) && $_GET['m'] != '') ? $breadcrumb .= '<li>' . ucwords($_GET['m']) . '</li>' : '';
-            (isset($_GET['c']) && $_GET['c'] != '') ? $breadcrumb .= '<li>' . ucwords(ControllerTb::getControllerByNome($_GET['c'])) . '</li>' : '';
+            (isset($_GET['c']) && $_GET['c'] != '') ? $breadcrumb .= '<li>' . ucwords($_GET['c']) . '</li>' : '';
             (isset($_GET['a']) && $_GET['a'] != '') ? $breadcrumb .= '<li>' . ucwords($_GET['a']) . '</li>' : '';
         }
 
