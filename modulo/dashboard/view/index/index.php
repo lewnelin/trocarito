@@ -74,53 +74,38 @@ require_once 'layout/includes/menu.php';
 
                 <div class="row mt">
                     <!-- SERVER STATUS PANELS -->
-                    <div class="col-md-4 col-sm-4 mb">
-                        <div class="white-panel pn donut-chart">
+                    <div class="col-md-8 mb">
+                        <div class="white-panel donut-chart">
                             <div class="white-header">
-                                <h5>SERVER LOAD</h5>
+                                <h5>PERCENTUAIS DE DISTRIBUIÇÃO</h5>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-6 goleft">
-                                    <p><i class="fa fa-database"></i> 70%</p>
+                                    <p><i class="fa fa-database"></i> 30%</p>
                                 </div>
                             </div>
-                            <canvas id="serverstatus01" height="120" width="120"></canvas>
+                            <canvas id="serverstatus01" height="300" width="300"></canvas>
                             <script>
                                 var doughnutData = [
                                     {
-                                        value: 70,
-                                        color: "#68dff0"
+                                        value: 30,
+                                        color: "red"
                                     },
                                     {
                                         value: 30,
-                                        color: "#fdfdfd"
+                                        color: "green"
+                                    },
+                                    {
+                                        value: 40,
+                                        color: "blue"
                                     }
                                 ];
-                                var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                                var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Pie(doughnutData);
                             </script>
                         </div>
-                        <! --/grey-panel -->
                     </div>
                     <!-- /col-md-4-->
 
-
-                    <div class="col-md-4 col-sm-4 mb">
-                        <div class="white-panel pn">
-                            <div class="white-header">
-                                <h5>TOP PRODUCT</h5>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-6 goleft">
-                                    <p><i class="fa fa-heart"></i> 122</p>
-                                </div>
-                                <div class="col-sm-6 col-xs-6"></div>
-                            </div>
-                            <div class="centered">
-                                <img src="assets/img/product.png" width="120">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /col-md-4 -->
 
                     <div class="col-md-4 mb">
                         <!-- WHITE PANEL - TOP USER -->
