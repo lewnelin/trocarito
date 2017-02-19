@@ -26,7 +26,7 @@ CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(60) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='CATEGORIA';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='CATEGORIA';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'Categoria 1'),(2,'Categoria 2');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,12 +82,12 @@ CREATE TABLE `instituicao` (
   `id_usuario` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
-  `descricao` int(100) DEFAULT NULL,
+  `descricao` text,
   PRIMARY KEY (`id_instituicao`),
   KEY `instituicao_usuario_idx` (`id_usuario`),
   KEY `instituicao_categoria_idx` (`id_categoria`),
   CONSTRAINT `instituicao_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +96,7 @@ CREATE TABLE `instituicao` (
 
 LOCK TABLES `instituicao` WRITE;
 /*!40000 ALTER TABLE `instituicao` DISABLE KEYS */;
+INSERT INTO `instituicao` VALUES (1,4,1,'Instituição Mãos Abertas','blablabla'),(2,5,2,'Instituição Deus Nosso','kakakakaka'),(3,6,1,'Instituição Livrança','lalalalalalla'),(4,1,1,'Associação de Proteção a Idoso','adsadsadas');
 /*!40000 ALTER TABLE `instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,10 +138,10 @@ CREATE TABLE `usuario` (
   `nome` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
   `senha` varchar(100) NOT NULL,
-  `nv_caridade` enum('1','10','100') NOT NULL,
+  `nv_caridade` enum('0','1','10','100') DEFAULT NULL,
   `fl_admin` enum('1','0') NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='USUARIO';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='USUARIO';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +150,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Admin','admin@gmail.com','202cb962ac59075b964b07152d234b70','1','1');
+INSERT INTO `usuario` VALUES (1,'Admin','admin@gmail.com','202cb962ac59075b964b07152d234b70','1','1'),(4,'Joao Alves','joao@gmail.com','202cb962ac59075b964b07152d234b70',NULL,'0'),(5,'jefferson biba','jeff@gmail.com','202cb962ac59075b964b07152d234b70',NULL,'0'),(6,'Bisneto Alum','bis@gmail.com','202cb962ac59075b964b07152d234b70',NULL,'0'),(7,'Jaozin','joao@gmail.com','202cb962ac59075b964b07152d234b70',NULL,'0');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -161,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-18 21:04:52
+-- Dump completed on 2017-02-19  8:06:48

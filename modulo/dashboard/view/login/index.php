@@ -39,8 +39,8 @@
                 <br>
                 <?= ($this->get('senha'))?$this->get('senha'):'' ?>
                 <input type="password" class="form-control" placeholder="Senha" name="senha">
-                <button class="btn btn-s    uccess btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>  Acessar </button>
-                <hr>
+                <br>
+                <button class="btn btn-success btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>  Acessar </button>
 
                 <div class="login-social-link centered">
                     <p>ou você pode entrar via rede social</p>

@@ -35,8 +35,8 @@ if (isset($_SESSION['trocarito'])) {
             </li>
 
             <li class="mt">
-                <a class="<?= ($_GET['c']=='instituicao')?'active':''?>" href="index.php">
-                    <i class="fa fa-dashboard"></i>
+                <a class="<?= ($_GET['c']=='instituicao')?'active':''?>" href="?m=dashboard&c=instituicao&a=index">
+                    <i class="li_shop"></i>
                     <span>Instituição</span>
                 </a>
             </li>
