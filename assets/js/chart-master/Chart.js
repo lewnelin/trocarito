@@ -253,7 +253,11 @@ window.Chart = function(context){
 			animationEasing : "easeOutBounce",
 			animateRotate : true,
 			animateScale : false,
-			onAnimationComplete : null
+			onAnimationComplete : null,
+			labelFontFamily : "Arial",
+			labelFontStyle : "normal",
+			labelFontSize : 24,
+			labelFontColor : "#666"
 		};		
 
 		var config = (options)? mergeChartConfig(chart.Pie.defaults,options) : chart.Pie.defaults;
@@ -725,15 +729,15 @@ window.Chart = function(context){
 				ctx.closePath();
 				ctx.fillStyle = data[i].color;
 				ctx.fill();
-				
+
 				if(config.segmentShowStroke){
 					ctx.lineWidth = config.segmentStrokeWidth;
 					ctx.strokeStyle = config.segmentStrokeColor;
 					ctx.stroke();
 				}
 				cumulativeAngle += segmentAngle;
-			}			
-		}		
+			}
+		}
 	}
 
 	var Doughnut = function(data,config,ctx){

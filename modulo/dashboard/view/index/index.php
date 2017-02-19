@@ -79,12 +79,20 @@ require_once 'layout/includes/menu.php';
                             <div class="white-header">
                                 <h5>PERCENTUAIS DE DISTRIBUIÇÃO</h5>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-6 goleft">
-                                    <p><i class="fa fa-database"></i> 30%</p>
+                            <canvas id="instituicoesPie" height="300" width="300"></canvas>
+                            <div class="legenda ds" style="float: right; width: 30%">
+                                <div class="desc">
+                                    <div class="details"><span style="color: red">Instituição A</span></div>
+                                </div>
+                                <div class="desc">
+                                    <div class="thumb"></div>
+                                    <div class="details"><span style="color: green">Instituição B</span></div>
+                                </div>
+                                <div class="desc">
+                                    <div class="thumb"></div>
+                                    <div class="details"><span style="color: blue">Instituição C</span></div>
                                 </div>
                             </div>
-                            <canvas id="serverstatus01" height="300" width="300"></canvas>
                             <script>
                                 var doughnutData = [
                                     {
@@ -100,7 +108,7 @@ require_once 'layout/includes/menu.php';
                                         color: "blue"
                                     }
                                 ];
-                                var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Pie(doughnutData);
+                                var myDoughnut = new Chart(document.getElementById("instituicoesPie").getContext("2d")).Pie(doughnutData);
                             </script>
                         </div>
                     </div>
