@@ -30,269 +30,205 @@ require_once 'layout/includes/menu.php';
     <?php endforeach; ?>
 <?php endif; ?>
 
-    <div class="modal fade" id="informacoes" tabindex="-1" role="dialog" aria-labelledby="">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" align="center"><i class="icon-info-circled"></i> Informações </h4>
-        </div>
-
-        <div class="modal-body form-horizontal corpoModal">
-            <div class="row carregando">
-                <div class="col-sm-12">
-                    <div class="form-group" align="center">
-                        <i class="loading"></i>
-                        <labe>Carregando</labe>
-                    </div>
-                </div>
-            </div>
-            <fieldset class="dadosPessoa" style="padding-left: 10px; padding-bottom: 8px">
-                <div class="row camposInfo nome">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Nome</strong></label>
-
-                            <div id="nome" class="col-sm-8"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row camposInfo cpf">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>CPF</strong></label>
-
-                            <div id="cpf" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <fieldset style="padding-left: 10px; padding-bottom: 8px">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Empreendimento</strong></label>
-
-                            <div id="empreendimento" class="col-sm-8"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row camposInfo corretor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Corretor</strong></label>
-
-                            <div id="corretor" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <form id="formDashboard" method="post" action="?m=dashboard&c=index&a=dashboardUsuario">
+            <div class="col-sm-12 main-chart">
 
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Quadra/Lote</strong></label>
+                    <div class="col-sm-3 box0">
+                        <div class="box1">
+                            <span class="li_star"></span>
 
-                            <div id="quadraLote" class="col-sm-7"></div>
+                            <h3>933</h3>
+                        </div>
+                        <p>Você já realizou <b>933</b> contribuições!</p>
+                    </div>
+                    <div class="col-sm-3 box0">
+                        <div class="box1">
+                            <span class="li_banknote"></span>
+
+                            <h3>R$ 135,00</h3>
+                        </div>
+                        <p>Valor total contribuído: <b>R$ 135,00</b></p>
+                    </div>
+                    <div class="col-sm-3 box0">
+                        <div class="box1">
+                            <span class="li_shop"></span>
+
+                            <h3>3</h3>
+                        </div>
+                        <p><b>3</b> Instituição são apoiadas por você!</p>
+                    </div>
+                    <div class="col-sm-3 box0">
+                        <div class="box1">
+                            <span class="li_heart" style="color: red;"></span>
+
+                            <h3><?= isset($user->nv_caridade) ? $user->nv_caridade : '' ?>%</h3>
+                        </div>
+                        <p>Sua caridade é <?= isset($user->nv_caridade) ? $user->nv_caridade : '' ?>%</p>
+                    </div>
+
+                </div>
+                <!-- /row mt -->
+
+
+                <div class="row mt">
+                    <!-- SERVER STATUS PANELS -->
+                    <div class="col-md-4 col-sm-4 mb">
+                        <div class="white-panel pn donut-chart">
+                            <div class="white-header">
+                                <h5>SERVER LOAD</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 goleft">
+                                    <p><i class="fa fa-database"></i> 70%</p>
+                                </div>
+                            </div>
+                            <canvas id="serverstatus01" height="120" width="120"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value: 70,
+                                        color: "#68dff0"
+                                    },
+                                    {
+                                        value: 30,
+                                        color: "#fdfdfd"
+                                    }
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                        </div>
+                        <! --/grey-panel -->
+                    </div>
+                    <!-- /col-md-4-->
+
+
+                    <div class="col-md-4 col-sm-4 mb">
+                        <div class="white-panel pn">
+                            <div class="white-header">
+                                <h5>TOP PRODUCT</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 goleft">
+                                    <p><i class="fa fa-heart"></i> 122</p>
+                                </div>
+                                <div class="col-sm-6 col-xs-6"></div>
+                            </div>
+                            <div class="centered">
+                                <img src="assets/img/product.png" width="120">
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <!-- /col-md-4 -->
 
-            </fieldset>
+                    <div class="col-md-4 mb">
+                        <!-- WHITE PANEL - TOP USER -->
+                        <div class="white-panel pn">
+                            <div class="white-header">
+                                <h5>TOP USER</h5>
+                            </div>
+                            <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
 
-            <fieldset class="valores" style="padding-left: 10px; padding-bottom: 8px">
-                <div class="row camposInfo valor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0" id="divValor">
-                            <label class="col-sm-4"><strong>Valor</strong></label>
+                            <p><b>Zac Snider</b></p>
 
-                            <div id="valor" class="col-sm-7"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="small mt">MEMBER SINCE</p>
+
+                                    <p>2012</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="small mt">TOTAL SPEND</p>
+
+                                    <p>$ 47,60</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- /col-md-4 -->
+
+
                 </div>
+                <!-- /row -->
 
-                <div class="row camposInfo valor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0" id="divValor">
-                            <label class="col-sm-4"><strong>Valor do sinal</strong></label>
 
-                            <div id="sinal" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row camposInfo valor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0" id="divValor">
-                            <label class="col-sm-4"><strong>Valor parcela normal</strong></label>
-
-                            <div id="parcela" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row camposInfo valor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0" id="divValor">
-                            <label class="col-sm-4"><strong>Valor intercalada</strong></label>
-
-                            <div id="vlintercalada" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row camposInfo valor">
-                    <div class="col-sm-12">
-                        <div class="form-group " style="margin-bottom: 0" id="divValor">
-                            <label class="col-sm-4"><strong>Qtd. parc. intercalada</strong></label>
-
-                            <div id="qtintercalada" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <fieldset class="dimensoes" style="padding-left: 10px; padding-bottom: 8px">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Área</strong></label>
+                    <!-- TWITTER PANEL -->
+                    <div class="col-md-4 mb">
+                        <div class="darkblue-panel pn">
+                            <div class="darkblue-header">
+                                <h5>DROPBOX STATICS</h5>
+                            </div>
+                            <canvas id="serverstatus02" height="120" width="120"></canvas>
+                            <script>
+                                var doughnutData = [
+                                    {
+                                        value: 60,
+                                        color: "#68dff0"
+                                    },
+                                    {
+                                        value: 40,
+                                        color: "#444c57"
+                                    }
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                            <p>April 17, 2014</p>
+                            <footer>
+                                <div class="pull-left">
+                                    <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+                                </div>
+                                <div class="pull-right">
+                                    <h5>60% Used</h5>
+                                </div>
+                            </footer>
+                        </div>
+                        <! -- /darkblue panel -->
+                    </div>
+                    <!-- /col-md-4 -->
 
-                            <div id="tamanho" class="col-sm-7"></div>
+
+                    <div class="col-md-4 mb">
+                        <!-- INSTAGRAM PANEL -->
+                        <div class="instagram-panel pn">
+                            <i class="fa fa-instagram fa-4x"></i>
+
+                            <p>@THISISYOU<br/>
+                                5 min. ago
+                            </p>
+
+                            <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
                         </div>
                     </div>
-                </div>
+                    <!-- /col-md-4 -->
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Frente</strong></label>
-
-                            <div id="loteFrente" class="col-sm-7"></div>
+                    <div class="col-md-4 col-sm-4 mb">
+                        <!-- REVENUE PANEL -->
+                        <div class="darkblue-panel pn">
+                            <div class="darkblue-header">
+                                <h5>REVENUE</h5>
+                            </div>
+                            <div class="chart mt">
+                                <div class="sparkline" data-type="line" data-resize="true" data-height="75"
+                                     data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff"
+                                     data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4"
+                                     data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+                            </div>
+                            <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
                         </div>
                     </div>
+                    <!-- /col-md-4 -->
+
                 </div>
+                <!-- /row -->
 
-                <div class="row">
-                    <div class="col-sm-12" style="padding-top: 3px">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Lado esquerdo</strong></label>
-
-                            <div id="loteEsquerdo" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12" style="padding-top: 3px">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Lado direito</strong></label>
-
-                            <div id="loteDireito" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12" style="padding-top: 3px">
-                        <div class="form-group" style="margin-bottom: 0">
-                            <label class="col-sm-4"><strong>Fundo</strong></label>
-
-                            <div id="loteFundo" class="col-sm-7"></div>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <div class="row camposInfo reservaTecnica">
-                <hr/>
-                <div class="col-sm-12">
-                    <div class="form-group " style="margin-bottom: 0">
-                        <div align="center" style="padding-top:0px; font-size: 20px;" class="col-sm-12">
-                            <strong>Reserva Técnica</strong>
-                        </div>
-                    </div>
-                </div>
-                <hr/>
-            </div>
-
-            <div class="row camposInfo reservaTecnica">
-                <div class="col-sm-12">
-                    <div class="form-group " style="margin-bottom:0; text-align: justify">
-                        <div id="obsReservaTecnica" style="padding-top:10px;" class="col-sm-12"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        </div>
-    </div>
-    <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-    </div>
-
-    <div class="row top-summary topo-painel-venda">
-
-        <form id="formDashboard" method="post" action="?m=dashboard&c=dashboard&a=painelVenda">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group col-sm-3">
-                        <select name="Empreendimento" id="Empreendimento" class="form-control"
-                                title="Escolha o Empreendimento" data-placeholder="Escolha um Empreendimento">
-                            <option value=""></option>
-                            <?php
-                            if ($listaEmpreendimentos) foreach ($listaEmpreendimentos as $empreendimentos) {
-                                echo '<option value="' . $empreendimentos['id'] . '" ' . $select . '> ' . $empreendimentos['nm_empreendimento'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <select name="Quadra" id="Quadra" class="form-control" title="Escolha a Quadra"
-                                data-placeholder="Escolha a Quadra" disabled>
-                            <option value=""></option>
-                            <option value="*">Todos</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <select name="statusLotes" id="statusLotes" class="form-control"
-                                title="Escolha o Status dos lotes" data-placeholder="Escolha o Status dos Lotes"
-                                disabled>
-                            <option value=""></option>
-                            <option selected value="*">Todos</option>
-                            <option value="D">Disponível</option>
-                            <option value="N">Negociação</option>
-                            <option value="R">Reservado</option>
-                            <option value="V">Vendido</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-sm-3">
-                        <select name="tabelaPreco" id="tabelaPreco" class="form-control"
-                                title="Escolha a Tabela de Preço" data-placeholder="Escolha a Tabela de Preço"
-                                disabled>
-                            <option value=""></option>
-                        </select>
-                    </div>
-                </div>
             </div>
         </form>
 
         <input type="hidden" id="ultimoId" name="ultimoId" value=""/>
         <input type="hidden" id="idCorretorAtual" name="idCorretorAtual"
                value="<?= Login::getUsuario()->getId() . '_' . Login::getUsuario()->getSuper() ?>"/>
-
-        <div class="row">
-            <div class="col-sm-12" id="listaLotes">
-                <div class="alert alert-info alert-dismissable" align="center">
-                    Escolha o Empreendimento para poder listar os lotes.
-                </div>
-            </div>
-        </div>
 
     </div>
 

@@ -169,7 +169,7 @@ class Db_Usuario {
         $db = Db::getInstance();
         $stmt = $db->prepare("SELECT *
 		                      FROM ".self::TABLE_NAME."
-		                      WHERE id = ?");
+		                      WHERE id_usuario = ?");
         $stmt->execute(array($id));
         $stmt->setFetchMode(PDO::FETCH_CLASS,"Db_Usuario");
         return $stmt->fetch();
@@ -177,7 +177,7 @@ class Db_Usuario {
 
     public static function findAllId() {
         $db = Db::getInstance();
-        $stmt = $db->prepare("SELECT id FROM ".self::TABLE_NAME);
+        $stmt = $db->prepare("SELECT id_usuario FROM ".self::TABLE_NAME);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_COLUMN,"Db_Usuario");
         return $stmt->fetchAll();
@@ -196,7 +196,7 @@ class Db_Usuario {
 
     public static function delete($id) {
         $db = Db::getInstance();
-        $delete  = "UPDATE ".self::TABLE_NAME." SET status = '0' WHERE id = ?";
+        $delete  = "UPDATE ".self::TABLE_NAME." SET status = '0' WHERE id_usuario = ?";
         $stmt = $db->prepare($delete);
         return $stmt->execute(array($id));
     }
@@ -216,12 +216,12 @@ class Db_Usuario {
         $db = DB::getInstance();
         if($count && $offset === false && $page === false) {
             $select = "SELECT count(u.id) FROM ".self::TABLE_NAME." u
-				   JOIN ".TB_PESSOA." p  ON u.id = p.id
-				   WHERE CONCAT(u.id,' ',UPPER(p.nm_pessoa),' ',UPPER(u.login)) LIKE {$termo} AND u.status = '1'";
+				   JOIN ".TB_PESSOA." p  ON u.id_usuario = p.id
+				   WHERE CONCAT(u.id_usuario,' ',UPPER(p.nm_pessoa),' ',UPPER(u.login)) LIKE {$termo} AND u.status = '1'";
         } else {
-            $select = "SELECT u.id FROM ".self::TABLE_NAME." u
+            $select = "SELECT u.id_usuario FROM ".self::TABLE_NAME." u
 				   JOIN ".TB_PESSOA." p  ON u.id = p.id
-				   WHERE CONCAT(u.id,' ',UPPER(p.nm_pessoa),' ',UPPER(u.login)) LIKE {$termo} AND u.status = '1' ";
+				   WHERE CONCAT(u.id_usuario,' ',UPPER(p.nm_pessoa),' ',UPPER(u.login)) LIKE {$termo} AND u.status = '1' ";
             if($offset !== false && $page !== false)
                 $select .= " LIMIT {$offset}, {$page} ";
         }

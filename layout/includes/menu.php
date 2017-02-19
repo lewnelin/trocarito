@@ -12,14 +12,20 @@
         </ul>
     </div>
 </header>
+<?php
+if (isset($_SESSION['trocarito'])) {
+    $user = ($_SESSION['trocarito']);
+    $user = Db_Usuario::find($user->id_usuario);
+}
+?>
 
 <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
-            <h5 class="centered">Marcel Newman</h5>
+            <p class="centered"><img src="assets/img/Coracao<?= isset($user->nv_caridade) ? $user->nv_caridade : '0' ?>.png" class="img-circle" width="60"></p>
+            <h5 class="centered"><?= isset($user->nome) ? $user->nome : '' ?></h5>
 
             <li class="mt">
                 <a class="active" href="index.php">
@@ -29,14 +35,14 @@
             </li>
 
             <li class="sub-menu">
-                <a href="#" >
+                <a href="#">
                     <i class="fa fa-university"></i>
                     <span>Instituições</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="general.html">General</a></li>
-                    <li><a  href="buttons.html">Buttons</a></li>
-                    <li><a  href="panels.html">Panels</a></li>
+                    <li><a href="general.html">General</a></li>
+                    <li><a href="buttons.html">Buttons</a></li>
+                    <li><a href="panels.html">Panels</a></li>
                 </ul>
             </li>
 
