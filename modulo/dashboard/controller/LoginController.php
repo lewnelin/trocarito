@@ -34,8 +34,8 @@ class LoginController extends Controller
             $tpUsuario = $this->tb_usuario->fetchByLogin($_POST["txt_login"], md5($_POST["txt_senha"]));
 
             if ($tpUsuario) {
-                    $this->login->autenticar();
-                    $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
+                $this->login->autenticar();
+                $this->redir(array("modulo" => "dashboard", "controller" => "index", 'action' => 'index'));
 
             } else {
                 $this->redir(array("modulo" => "dashboard", "controller" => "login", 'action' => 'index'), array("msg" => '<b>Login ou Senha Incorreto <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></b><br> O login ou senha digitados não pertence a nenhuma conta.'));
@@ -53,15 +53,13 @@ class LoginController extends Controller
 
 
     //Função pública responsável por adicionar um novo usuário
-    public function adicionarlogAction()
+    public function cadastrarAction()
     {
-        //Carrega os campos da pessoa caso ela já exista
-        $l = $this->tb_log_acesso->createRow();
-        $l->id_usuario = $this->login->getUsuario()->getId();
-        $l->dt_acesso = date("Y/m/d");
-        $l->hr_acesso = date("H:i:s");
-        $l->ip_acesso = $_SERVER['REMOTE_ADDR'];
-        $l->fl_painel_vendas = '1';
-        $l->save();
+
+        if ($this->_isPost) {
+
+
+        }
+        $this->display('cadastrar');
     }
 }
