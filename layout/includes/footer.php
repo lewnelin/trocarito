@@ -1,90 +1,89 @@
-<footer>
-    AcadeOne Softwares © 2016
-    <div class="footer-links pull-right">
-        <p align="center"><a href="http://www.acadeone.com.br/" target="_blank">www.acadeone.com.br</a> - Soluções em
-            Sistemas de Informação - EMPRESA: (83) 3512-5331 | SUPORTE: (83) 3512-5332</p>
+<footer class="site-footer">
+    <div class="text-center">
+        2014 - Alvarez.is
+        <a href="index.html#" class="go-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
     </div>
 </footer>
 
-</div> <!--.content end-->
+</section>
 
-</div> <!--.content-page end-->
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-1.8.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="assets/js/jquery.sparkline.js"></script>
 
-<div id="contextMenu" class="dropdown clearfix" style="display: none;">
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
-        style="display:block;position:static;margin-bottom:5px;">
-        <li><a tabindex="-1" href="javascript:;" data-priority="high"><i class="fa fa-circle-o text-red-1"></i> High
-                Priority</a></li>
-        <li><a tabindex="-1" href="javascript:;" data-priority="medium"><i class="fa fa-circle-o text-orange-3"></i>
-                Medium Priority</a></li>
-        <li><a tabindex="-1" href="javascript:;" data-priority="low"><i class="fa fa-circle-o text-yellow-1"></i> Low
-                Priority</a></li>
-        <li><a tabindex="-1" href="javascript:;" data-priority="none"><i class="fa fa-circle-o text-lightblue-1"></i>
-                None</a></li>
-    </ul>
-</div>
 
-<div class="md-overlay"></div>
-<script>
-    var resizefunc = [];
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+
+<script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+<!--script for this page-->
+<script src="assets/js/sparkline-chart.js"></script>
+<script src="assets/js/zabuto_calendar.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Welcome to Dashgum!',
+            // (string | mandatory) the text inside the notification
+            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
+            // (string | optional) the image to display on the left
+            image: 'assets/img/ui-sam.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: true,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'my-sticky-class'
+        });
+
+        return false;
+    });
 </script>
 
-<script type="text/javascript" src="public/libs/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="public/libs/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-ui-touch/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-detectmobile/detect.js"></script>
-<script type="text/javascript" src="public/libs/jquery-animate-numbers/jquery.animateNumbers.js"></script>
-<script type="text/javascript" src="public/libs/ios7-switch/ios7.switch.js"></script>
-<script type="text/javascript" src="public/libs/fastclick/fastclick.js"></script>
-<script type="text/javascript" src="public/libs/jquery-blockui/jquery.blockUI.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-bootbox/bootbox.min.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="public/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="public/libs/jquery-sparkline/jquery-sparkline.js"></script>
-<script type="text/javascript" src="public/libs/sortable/sortable.min.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-fileinput/fileinput.js"></script>
-<script type="text/javascript" src="public/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="public/libs/pace/pace.min.js"></script>
-<script type="text/javascript" src="public/libs/prettify/prettify.js"></script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        $("#date-popover").popover({html: true, trigger: "manual"});
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+            $(this).hide();
+        });
 
-<script type="text/javascript" src="public/libs/jquery-maskmoney/jquery.maskMoney.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-weather/jquery.simpleWeather-2.6.min.js"></script>
-<script type="text/javascript" src="public/libs/morrischart/morris.min.js"></script>
-<script type="text/javascript" src="public/libs/raphael/raphael-min.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-calendar/js/bic_calendar.min.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-xeditable/js/bootstrap-editable.min.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-xeditable/demo/jquery.mockjax.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-xeditable/demo/demo-mock.js"></script>
-<script type="text/javascript" src="public/libs/jquery-wizard/jquery.easyWizard.js"></script>
-<script type="text/javascript" src="public/libs/momentjs/moment.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-mask/jquery-mask.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-icheck/icheck.min.js"></script>
-
-<!--DATEPICKER-->
-<script type="text/javascript" src="public/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="public/libs/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<!--SELECT2-->
-<script type="text/javascript" src="public/libs/select2/v4.0.1/js/select2.full.js"></script>
+        $("#my-calendar").zabuto_calendar({
+            action: function () {
+                return myDateFunction(this.id, false);
+            },
+            action_nav: function () {
+                return myNavFunction(this.id);
+            },
+            ajax: {
+                url: "show_data.php?action=1",
+                modal: true
+            },
+            legend: [
+                {type: "text", label: "Special event", badge: "00"},
+                {type: "block", label: "Regular event", }
+            ]
+        });
+    });
 
 
-<script type="text/javascript" src="public/libs/bootstrap-validator/js/bootstrapValidator.js"></script>
-<script type="text/javascript" src="public/libs/jquery-knob/jquery.knob.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-easypiechart/jquery.easypiechart.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-datatables/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-datatables/js/dataTables.bootstrap.js"></script>
-<script type="text/javascript"
-        src="public/libs/jquery-datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-datatables/plugins/1.10.8/api/fnMultiFilter.js"></script>
-
-<!--NotifyJs-->
-<script type="text/javascript" src="public/libs/jquery-notifyjs/notify.min.js"></script>
-<script type="text/javascript" src="public/libs/jquery-notifyjs/styles/metro/notify-metro.js"></script>
-
-
-<script type="text/javascript" src="public/js/init.js"></script>
-<script type="text/javascript" src="public/js/validatorsBV.js"></script>
-<script type="text/javascript" src="public/js/funcoes.js"></script>
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+</script>
 
 <!-- JS do programa -->
 <?php Helper::exibeJS(); ?>
