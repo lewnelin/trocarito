@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
-    <meta name="keyword" content="trocos, doação, ongs, instituições,">
+    <meta name="keyword" content="rotas, onibus, localizacao">
 
-    <title>Trocarito</title>
+    <title>Rotas e Rumos</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
 <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
 <script>
-    $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+    $.backstretch("assets/img/rotasLogin.jpg", {speed: 500});
 </script>
 
 

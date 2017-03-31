@@ -1,5 +1,5 @@
 <footer class="site-footer">
-    <div class="text-center">
+    <div class="text-center" style="width: 1100px">
         2017 - Trocarito
         <a href="?m=dashboard&c=index&a=index#" class="go-top">
             <i class="fa fa-angle-up"></i>

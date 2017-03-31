@@ -3,7 +3,8 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="?m=dashboard&c=index&a=index" class="logo"><b><img alt="avatar" height="30" src="images/logo.png"></b></a>
+    <a href="?m=dashboard&c=index&a=index" class="logo"><b><img alt="avatar" height="30"
+                                                                src="images/logoRotasRumos.png"></b></a>
     <!--logo end-->
 
     <div class="top-menu">
@@ -13,8 +14,8 @@
     </div>
 </header>
 <?php
-if (isset($_SESSION['trocarito'])) {
-    $user = ($_SESSION['trocarito']);
+if (isset($_SESSION['rotaserumos'])) {
+    $user = ($_SESSION['rotaserumos']);
     $user = Db_Usuario::find($user->id_usuario);
 }
 ?>
@@ -25,8 +26,8 @@ if (isset($_SESSION['trocarito'])) {
         <ul class="sidebar-menu" id="nav-accordion">
 
             <p class="centered"><img
-                        src="assets/img/Coracao<?= isset($user->nv_caridade) ? $user->nv_caridade : '0' ?>.png"
-                        class="img-circle" width="60"></p>
+                    src="assets/img/ui-sherman.jpg"
+                    class="img-circle" width="60"></p>
             <h5 class="centered"><?= isset($user->nome) ? $user->nome : '' ?></h5>
 
             <li class="mt">
@@ -36,6 +37,7 @@ if (isset($_SESSION['trocarito'])) {
                 </a>
             </li>
 
+            <!--
             <li class="mt">
                 <a class="<?= ($_GET['c'] == 'instituicao') ? 'active' : '' ?>"
                    href="?m=dashboard&c=instituicao&a=index">
@@ -43,6 +45,7 @@ if (isset($_SESSION['trocarito'])) {
                     <span>Instituição</span>
                 </a>
             </li>
+            -->
 
         </ul>
         <!-- sidebar menu end-->
@@ -75,4 +78,4 @@ if (isset($_SESSION['trocarito'])) {
     <section class="wrapper">
 
         <?= ($this->get('success')) ? $this->get('success') : '' ?>
-        <?= ($this->get('fail')) ? $this->get('success') : '' ?>
+<?= ($this->get('fail')) ? $this->get('success') : '' ?>

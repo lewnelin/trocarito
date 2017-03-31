@@ -15,7 +15,7 @@ class Login
     private $login;
     private $senha;
 
-    const SESSION_NAME = "trocarito";
+    const SESSION_NAME = "rotaserumos";
 
     public function autenticar()
     {

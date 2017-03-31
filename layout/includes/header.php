@@ -12,7 +12,7 @@ if (!Login::isLogado()) {
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title>Trocarito</title>
+    <title>Rotas e Rumos</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">

@@ -14,9 +14,9 @@ require_once dirname(__FILE__).'/../library/Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->setFallbackAutoloader(true);
 
-$pdoParams = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8;');
+$pdoParams = array();
 
-$db = new Zend_Db_Adapter_Pdo_Mysql(array(
+$db = new Zend_Db_Adapter_Pdo_Pgsql(array(
     'host'     => DB_HOST,
     'username' => DB_USER,
     'password' => DB_PASSWORD,

@@ -1,5 +1,5 @@
 <?php
 define("DB_HOST","localhost");
-define("DB_USER","root");
-define("DB_PASSWORD","");
-define("DB_NAME","trocarito");
+define("DB_USER","postgres");
+define("DB_PASSWORD","postgres");
+define("DB_NAME","rotaserumos");
